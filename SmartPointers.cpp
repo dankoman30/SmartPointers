@@ -47,7 +47,7 @@ void learnWeak() {
     cout << "Let's learn about them!\n";
     cout << "Weak_ptr smart pointer type is a smart pointer that is not included in the reference list that determines if out-of-scope. Its advantages\n";
     cout << "include auto-initiation to null and its absence from the auto-deletion decision. Additionally, weak_ptr smart pointer type NEVER has ownership,\n";
-    cout << "which could be considered an advantage or a disadvantage, depending on use case. This pointer type cannot ever assume any ownership.\n\n"
+    cout << "which could be considered an advantage or a disadvantage, depending on use case. This pointer type cannot ever assume any ownership.\n\n";
 }
 
 int main() {
