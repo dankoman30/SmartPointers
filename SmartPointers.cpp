@@ -31,17 +31,23 @@ void learnShared() {
     cout << "Let's learn about them!\n";
     cout << "Shared_ptr smart pointer type is a smart pointer that shares ownership with any other smart pointer types. Auto-deletion takes place\n";
     cout << "once out of scope for all smart pointers that have some ownership. Initiation to null is also automatic. A disadvantage of this smart\n";
-    cout << "pointer type is that in order to delete, all smart pointers must be out of scope.";
+    cout << "pointer type is that in order to delete, all smart pointers must be out of scope.\n\n";
 }
 
 void learnUnique() {
     talkAbout("Unique_ptr");
     cout << "Let's learn about them!\n";
+    cout << "Unique_ptr smart pointer type is a smart pointer that has EXCLUSIVE ownership. It auto-deletes once out of scope, and auto-initiates\n";
+    cout << "to null. Additionally, ownership can be transferred to another Unique_ptr. The only disadvantage of this smart pointer type is that\n";
+    cout << "inherently, ownership cannot be shared (hence its unique name).\n\n";
 }
 
 void learnWeak() {
     talkAbout("Weak_ptr");
     cout << "Let's learn about them!\n";
+    cout << "Weak_ptr smart pointer type is a smart pointer that is not included in the reference list that determines if out-of-scope. Its advantages\n";
+    cout << "include auto-initiation to null and its absence from the auto-deletion decision. Additionally, weak_ptr smart pointer type NEVER has ownership,\n";
+    cout << "which could be considered an advantage or a disadvantage, depending on use case. This pointer type cannot ever assume any ownership.\n\n"
 }
 
 int main() {
