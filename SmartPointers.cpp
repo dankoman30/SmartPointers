@@ -20,7 +20,10 @@ void talkAbout(string type) {
 
 void learnAuto() {
     talkAbout("auto_ptr");
-    cout << "auto_ptr smart pointer type should not be used.\n";
+    cout << "auto_ptr smart pointer type should not be used. Its disadvantages outweigh its advantages, and there are more suitable options.\n";
+    cout << "auto_ptr is a smart pointer that assumes or transfers ownership.  Althoguh it auto-initiates to null and auto-deletes when out of\n";
+    cout << "scope, the ownership is transferred when passed as a parameter. It does not work with containers, and does not work with anything\n";
+    cout << "that requires 'new.' It should probably be avoided for these reasons.\n\n";
 }
 
 void learnShared() {
