@@ -29,6 +29,9 @@ void learnAuto() {
 void learnShared() {
     talkAbout("Shared_ptr");
     cout << "Let's learn about them!\n";
+    cout << "Shared_ptr smart pointer type is a smart pointer that shares ownership with any other smart pointer types. Auto-deletion takes place\n";
+    cout << "once out of scope for all smart pointers that have some ownership. Initiation to null is also automatic. A disadvantage of this smart\n";
+    cout << "pointer type is that in order to delete, all smart pointers must be out of scope.";
 }
 
 void learnUnique() {
