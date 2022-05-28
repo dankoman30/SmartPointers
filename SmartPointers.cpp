@@ -63,7 +63,7 @@ class Talker { // create talker class, responsible for communicating with the us
 unique_ptr<Talker> demoUnique(unique_ptr<Talker> pTalkerTemp) {
     pTalkerTemp->learnUnique(); // call learnunique function (this time from the new temp pointer created)
     cout << endl << pTalkerTemp.get() << endl << endl << "Pretty cool, huh?\n\n"; // output the memory address of the unique pointer
-    return move(pTalkerTemp); // return the pointer back to the caller as (transfer ownership back)
+    return pTalkerTemp; // return the pointer back to the caller as (transfer ownership back)
 }
 
 int main() {
@@ -84,9 +84,10 @@ int main() {
             pTalker->learnShared(); // call learnshared function
             continue;
         case 3: // Unique_ptr
-            pTalker = demoUnique(move(pTalker)); // basically sets pTalker equal to itself, because demoUnique is type unique_ptr<Talker>,
-                                                 // and coded to return ownership of the passed pointer parameter. In essence, we're transferring
-                                                 // ownership to the parameter, then receiving it back.
+            pTalker = move(demoUnique(move(pTalker))); // (SLICK ONE-LINER FOR DEMONSTRATION PURPOSES)
+                                                       // basically sets pTalker equal to itself, because demoUnique is type unique_ptr<Talker>,
+                                                       // and coded to bounce back the pointer parameter that it receives. In essence, we're
+                                                       // transferring ownership to the parameter being passed, then taking it back!
             continue;
         case 4: // Weak_ptr
             pTalker->learnWeak(); // call learnunique function
