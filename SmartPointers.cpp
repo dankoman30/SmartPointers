@@ -62,7 +62,8 @@ class Talker { // create talker class, responsible for communicating with the us
 
 int main() {
     intro();
-    std::unique_ptr<Talker> talker(new Talker); // instantiate Talker class as new pointer
+    unique_ptr<Talker> pTalker(new Talker); // instantiate Talker class as new pointer
+    unique_ptr<Talker> pTalkerTemp(nullptr); // initialize pTalkerTemp as null pointer
 
     for (;;) { // main loop
         int choice;
@@ -73,17 +74,19 @@ int main() {
 
         switch (choice) {
         case 1: // auto_ptr
-            talker->learnAuto(); // call learnauto function
+            pTalker->learnAuto(); // call learnauto function
             continue;
         case 2: // Shared_ptr
-            talker->learnShared(); // call learnshared function
+            pTalker->learnShared(); // call learnshared function
             continue;
         case 3: // Unique_ptr
-            talker->learnUnique(); // call learnunique function
-            cout << endl << talker.get() << endl << endl << "Pretty cool, huh?\n\n"; // output the memory address of the unique pointer
+            pTalkerTemp = move(pTalker); // transfer ownership to  pTalkerTemp
+            pTalkerTemp->learnUnique(); // call learnunique function (this time from the new temp pointer created
+            cout << endl << pTalkerTemp.get() << endl << endl << "Pretty cool, huh?\n\n"; // output the memory address of the unique pointer
+            pTalker = move(pTalkerTemp); // transfer ownership back to pTalker
             continue;
         case 4: // Weak_ptr
-            talker->learnWeak(); // call learnunique function
+            pTalker->learnWeak(); // call learnunique function
             continue;
         case 5: // EXIT
             cout << "BYE!\n";
