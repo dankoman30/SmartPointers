@@ -46,7 +46,7 @@ class Talker { // create talker class, responsible for communicating with the us
             cout << "to null. Additionally, ownership can be transferred to another Unique_ptr. The only disadvantage of this smart pointer type is that\n";
             cout << "inherently, ownership cannot be shared (hence its unique name).\n\n";
             cout << "In fact, A UNIQUE POINTER WAS USED AND INSTANTIATED IN THIS VERY PROGRAM! Would you like to know the memory address of the pointer used?\n";
-            cout << "Here it is:\n";
+            cout << "Here it is:\n"; // unique_ptr memory address is expected to follow in cout
         }
 
         void learnWeak() {
@@ -61,18 +61,17 @@ class Talker { // create talker class, responsible for communicating with the us
 };
 
 unique_ptr<Talker> demoUnique(unique_ptr<Talker> pTalkerTemp) {
-    pTalkerTemp->learnUnique(); // call learnunique function (this time from the new temp pointer created
+    pTalkerTemp->learnUnique(); // call learnunique function (this time from the new temp pointer created)
     cout << endl << pTalkerTemp.get() << endl << endl << "Pretty cool, huh?\n\n"; // output the memory address of the unique pointer
-    return move(pTalkerTemp); // return the pointer back to the caller
+    return move(pTalkerTemp); // return the pointer back to the caller as (transfer ownership back)
 }
 
 int main() {
     intro();
-    unique_ptr<Talker> pTalker(new Talker); // instantiate Talker class as new pointer
+    unique_ptr<Talker> pTalker(new Talker); // instantiate new unique_ptr<Talker> to newly constructed Talker object
 
     for (;;) { // main loop
         int choice;
-
         cout << "\n\nWhich type of smart pointer would you like to learn about?" << endl << endl << "1. Auto pointer (auto_ptr)\n2. Shared pointer (Shared_ptr)\n3. Unique pointer (Unique_ptr)\n4. Weak pointer (Weak_ptr)\n5. Exit\n\n";
         cout << "Your choice: ";
         cin >> choice;
